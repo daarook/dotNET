@@ -9,37 +9,41 @@ namespace ServiceLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IService1
+    public interface IProductService
     {
         [OperationContract]
-        string GetData(int value);
+        void changeProductStock(int productId, int amount);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        // TODO: Add your service operations here
+        Product getProductsInStock(); 
     }
-
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "ServiceLibrary.ContractType".
     [DataContract]
-    public class CompositeType
+    public class Product
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
+        int stock;
+        string name;
+        double price;
         [DataMember]
-        public bool BoolValue
+        public int Stock
         {
-            get { return boolValue; }
-            set { boolValue = value; }
+            get { return stock; }
+            set { stock = value; }
         }
 
         [DataMember]
-        public string StringValue
+        public string Name
         {
-            get { return stringValue; }
-            set { stringValue = value; }
+            get { return name; }
+            set { name = value; }
+        }
+
+        [DataMember]
+        public double Price
+        {
+            get { return price; }
+            set { price = value; }
         }
     }
 }
