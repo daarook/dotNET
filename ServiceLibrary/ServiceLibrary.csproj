@@ -53,6 +53,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="IProductService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Model1.Context.cs">

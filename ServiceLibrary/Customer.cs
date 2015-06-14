@@ -12,18 +12,17 @@ namespace ServiceLibrary
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class Customer
     {
-        public Order()
+        public Customer()
         {
-            this.OrderEntry = new HashSet<OrderEntry>();
+            this.Order = new HashSet<Order>();
         }
     
         public int Id { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public int CustomerId { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
     
-        public virtual ICollection<OrderEntry> OrderEntry { get; set; }
-        public virtual Customer Customer { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/14/2015 12:10:58
+-- Date Created: 06/14/2015 12:23:48
 -- Generated from EDMX file: C:\Users\Milamber\Documents\Visual Studio 2013\Projects\ServiceLibrary\ServiceLibrary\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_OrderEntryProduct]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_OrderEntryProduct];
-GO
 IF OBJECT_ID(N'[dbo].[FK_OrderOrderEntry]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_OrderOrderEntry];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductOrderEntry]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_ProductOrderEntry];
 GO
 
 -- --------------------------------------------------
@@ -54,8 +54,8 @@ GO
 -- Creating table 'OrderSet'
 CREATE TABLE [dbo].[OrderSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [CustName] nvarchar(max)  NOT NULL,
-    [OrderDate] datetime  NOT NULL
+    [OrderDate] datetime  NOT NULL,
+    [CustomerId] int  NOT NULL
 );
 GO
 
@@ -65,6 +65,14 @@ CREATE TABLE [dbo].[OrderEntrySet] (
     [Amount] int  NOT NULL,
     [OrderId] int  NOT NULL,
     [ProductId] int  NOT NULL
+);
+GO
+
+-- Creating table 'CustomerSet'
+CREATE TABLE [dbo].[CustomerSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Password] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -87,6 +95,12 @@ GO
 -- Creating primary key on [Id] in table 'OrderEntrySet'
 ALTER TABLE [dbo].[OrderEntrySet]
 ADD CONSTRAINT [PK_OrderEntrySet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'CustomerSet'
+ALTER TABLE [dbo].[CustomerSet]
+ADD CONSTRAINT [PK_CustomerSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -122,6 +136,21 @@ GO
 CREATE INDEX [IX_FK_ProductOrderEntry]
 ON [dbo].[OrderEntrySet]
     ([ProductId]);
+GO
+
+-- Creating foreign key on [CustomerId] in table 'OrderSet'
+ALTER TABLE [dbo].[OrderSet]
+ADD CONSTRAINT [FK_CustomerOrder]
+    FOREIGN KEY ([CustomerId])
+    REFERENCES [dbo].[CustomerSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CustomerOrder'
+CREATE INDEX [IX_FK_CustomerOrder]
+ON [dbo].[OrderSet]
+    ([CustomerId]);
 GO
 
 -- --------------------------------------------------

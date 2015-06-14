@@ -9,6 +9,7 @@
     <EntitySet Name="ProductSet" EntityType="Model1.Store.ProductSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrderSet" EntityType="Model1.Store.OrderSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="OrderEntrySet" EntityType="Model1.Store.OrderEntrySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerSet" EntityType="Model1.Store.CustomerSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="OrderOrderEntry" Association="Model1.Store.OrderOrderEntry">
       <End Role="Order" EntitySet="OrderSet" />
       <End Role="OrderEntry" EntitySet="OrderEntrySet" />
@@ -16,6 +17,10 @@
     <AssociationSet Name="ProductOrderEntry" Association="Model1.Store.ProductOrderEntry">
       <End Role="Product" EntitySet="ProductSet" />
       <End Role="OrderEntry" EntitySet="OrderEntrySet" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerOrder" Association="Model1.Store.CustomerOrder">
+      <End Role="Customer" EntitySet="CustomerSet" />
+      <End Role="Order" EntitySet="OrderSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProductSet">
@@ -32,8 +37,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CustName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderEntrySet">
     <Key>
@@ -43,6 +48,14 @@
     <Property Name="Amount" Type="int" Nullable="false" />
     <Property Name="OrderId" Type="int" Nullable="false" />
     <Property Name="ProductId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="OrderOrderEntry">
     <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="1" />
@@ -68,6 +81,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CustomerOrder">
+    <End Role="Customer" Type="Model1.Store.CustomerSet" Multiplicity="1" />
+    <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -84,6 +109,11 @@
             <End Role="Product" EntitySet="ProductSet" />
             <End Role="OrderEntry" EntitySet="OrderEntrySet" />
           </AssociationSet>
+          <EntitySet Name="CustomerSet" EntityType="Model1.Customer" />
+          <AssociationSet Name="CustomerOrder" Association="Model1.CustomerOrder">
+            <End Role="Customer" EntitySet="CustomerSet" />
+            <End Role="Order" EntitySet="OrderSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
@@ -99,9 +129,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustName" Type="String" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="OrderEntry" Relationship="Model1.OrderOrderEntry" FromRole="Order" ToRole="OrderEntry" />
+          <NavigationProperty Name="Customer" Relationship="Model1.CustomerOrder" FromRole="Order" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderEntry">
           <Key>
@@ -138,6 +169,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <Association Name="CustomerOrder">
+          <End Type="Model1.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="Model1.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -158,8 +210,8 @@
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Order)">
         <MappingFragment StoreEntitySet="OrderSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CustName" ColumnName="CustName" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -170,6 +222,15 @@
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
+        <MappingFragment StoreEntitySet="CustomerSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
