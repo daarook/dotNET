@@ -12,12 +12,18 @@ namespace ServiceLibrary
     {
         public void placeOrder(Customer customer, Dictionary<Product,int> orderRows)
         {
-            Order order = new Order{OrderDate = }
-            foreach (KeyValuePair<Product, int> row in orderRows)
+            using (Model1Container ctx = new Model1Container())
             {
-                Product product = row.Key;
-                int amount = row.Value;
-
+                Order order = new Order { OrderDate = DateTime.Now, Customer = customer };
+                ctx.OrderSet.Add(order);
+                foreach (KeyValuePair<Product, int> row in orderRows)
+                {
+                    Product product = row.Key;
+                    int amount = row.Value;
+                    OrderEntry orderEntry = new OrderEntry { Product = product, Amount = amount, Order = order };
+                    ctx.OrderEntrySet.Add(orderEntry);
+                }
+                ctx.SaveChanges();
             }
         }
     }
