@@ -14,8 +14,8 @@
         </ListBox>
         <Label Content="Winkel voorraad" HorizontalAlignment="Left" Margin="44,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Gekochte producten" HorizontalAlignment="Left" Margin="303,24,0,0" VerticalAlignment="Top"/>
-        <Button Content="Koop product" HorizontalAlignment="Left" Margin="44,244,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="145,27,0,0" VerticalAlignment="Top" Width="51" Click="Button_Click"/>
+        <Button Content="Koop product" HorizontalAlignment="Left" Margin="44,244,0,0" VerticalAlignment="Top" Width="96" Click="BuyProduct"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="145,27,0,0" VerticalAlignment="Top" Width="51" Click="RefreshStore"/>
         <Label Content="Saldo:" HorizontalAlignment="Left" Margin="303,245,0,0" VerticalAlignment="Top"/>
         <Label Content="50.00" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
     </Grid>
