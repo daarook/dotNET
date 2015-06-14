@@ -30,7 +30,12 @@ namespace UserClient
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BuyProduct(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefreshStore(object sender, RoutedEventArgs e)
         {
 
         }

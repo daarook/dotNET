@@ -40,8 +40,8 @@ namespace UserClient
 
             if (success)
             {
-                new MainWindow();
                 Close();
+                new MainWindow().Show();
             }
         }
     }
