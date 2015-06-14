@@ -15,7 +15,7 @@ namespace ServiceLibrary
                 if (ctx.CustomerSet.Any(c => c.Name == name))
                 {
                     char[] charArray = name.ToCharArray();
-                    Array.Reverse(name.ToCharArray());
+                    Array.Reverse(charArray);
                     string password = new string(charArray);
                     Customer customer = new Customer { Name = name, Password = password, Saldo=50.0};
                     ctx.CustomerSet.Add(customer);
