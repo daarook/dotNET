@@ -9,6 +9,7 @@ namespace ServiceLibrary
 {
     public class CustomerService : ICustomerService
     {
+        Type providerService = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
         public string Register(string name)
         {
             using(Model1Container ctx = new Model1Container()) {
