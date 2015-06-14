@@ -2,8 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="35,52,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="116" Width="148"/>
-
+    <Grid Background="AliceBlue" UseLayoutRounding="False">
+        <ListBox HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
+            <ListBoxItem Content="Product1: 5 stuks; 1.28"/>
+            <ListBoxItem Content="Product2: 1 stuks; 0.93"/>
+            <ListBoxItem Content="Product3: 8 stuks; 3.12"/>
+            <ListBoxItem Content="Product4: 10 stuks; 1.75"/>
+        </ListBox>
+        <ListBox HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
+            <ListBoxItem Content="Product2: 3 stuks" Selected="ListBoxItem_Selected"/>
+        </ListBox>
+        <Label Content="Winkel voorraad" HorizontalAlignment="Left" Margin="44,24,0,0" VerticalAlignment="Top"/>
+        <Label Content="Gekochte producten" HorizontalAlignment="Left" Margin="303,24,0,0" VerticalAlignment="Top"/>
+        <Button Content="Koop product" HorizontalAlignment="Left" Margin="44,244,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="145,27,0,0" VerticalAlignment="Top" Width="51" Click="Button_Click"/>
+        <Label Content="Saldo:" HorizontalAlignment="Left" Margin="303,245,0,0" VerticalAlignment="Top"/>
+        <Label Content="50.00" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
     </Grid>
 </Window>
