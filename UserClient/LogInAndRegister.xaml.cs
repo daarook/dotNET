@@ -27,7 +27,24 @@ namespace UserClient
 
         private void RegisterUser(object sender, RoutedEventArgs e)
         {
+            //get input from textbox
+            string username = RegisterUsername.Text;
 
+            if (!String.IsNullOrEmpty(username)) // check if input is not null or empty
+            {
+                string message;
+                //call service
+                using (CustomerServiceClient proxy = new CustomerServiceClient())
+                {
+                    message = proxy.Register(username);
+                }
+                RegisterLabel.Content = message;
+
+            }
+            else
+            {
+                RegisterLabel.Content = "Vul a.u.b een waarde in.";
+            }
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -38,22 +55,36 @@ namespace UserClient
         private void AuthenticateUser(object sender, RoutedEventArgs e)
         {
             //get info from textbox
-            string username = "";
-            string password = "";
+            string username = LoginUsername.Text;
+            string password = LoginPassword.Text;
 
             //verify the input
 
+            bool validated = (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password));
 
-            //call service
-            CustomerServiceClient proxy = new CustomerServiceClient();
-
-            Customer user = proxy.Authenticate(username, password);
-
-            if (user != null) //success from authenticate
+            if (validated)
             {
-                Close();
-                MainWindow w = new MainWindow();
-                w.customer = user;
+                //call service
+                CustomerServiceClient proxy = new CustomerServiceClient();
+
+                Customer user = null;
+                user = proxy.Authenticate(username, password);
+
+                if (user != null) //success from authenticate
+                {
+                    Close();
+                    MainWindow w = new MainWindow();
+                    w.customer = user;
+                    w.Show();
+                }
+                else
+                {
+                    LoginLabel.Content = "Gebruikersnaam en/of wachtwoord incorrect.";
+                }
+            }
+            else
+            {
+                LoginLabel.Content = "Vul a.u.b waardes in";
             }
         }
     }
