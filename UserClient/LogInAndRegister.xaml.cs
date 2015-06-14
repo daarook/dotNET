@@ -72,10 +72,11 @@ namespace UserClient
                 try
                 {
                     user = proxy.Authenticate(username, password);
-                    Close();
+                    
                     MainWindow w = new MainWindow();
                     w.customer = user;
                     w.Show();
+                    Close();
                 }
                 //catch (Exception ex)
                 //{
