@@ -19,6 +19,9 @@
   <wsdl:message name="ICustomerService_Authenticate_OutputMessage">
     <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
   </wsdl:message>
+  <wsdl:message name="ICustomerService_Authenticate_ErrorMessageFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/ServiceLibrary" name="detail" element="q1:ErrorMessage" />
+  </wsdl:message>
   <wsdl:portType name="ICustomerService">
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/Register" message="tns:ICustomerService_Register_InputMessage" />
@@ -27,6 +30,7 @@
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/ICustomerService/Authenticate" message="tns:ICustomerService_Authenticate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICustomerService/AuthenticateResponse" message="tns:ICustomerService_Authenticate_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICustomerService/AuthenticateErrorMessageFault" name="ErrorMessageFault" message="tns:ICustomerService_Authenticate_ErrorMessageFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ICustomerService" type="tns:ICustomerService">
@@ -48,6 +52,9 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="ErrorMessageFault">
+        <soap:fault use="literal" name="ErrorMessageFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CustomerService">
