@@ -13,5 +13,8 @@ namespace ServiceLibrary
     {
         [OperationContract]
         void placeOrder(Product product, Customer customer, int amount);
+
+        [OperationContract]
+        Order[] getCustomerOrders(Customer customer);
     }
 }

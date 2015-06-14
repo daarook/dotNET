@@ -26,5 +26,13 @@ namespace ServiceLibrary
                 ctx.SaveChanges();
             }
         }
+        public Order[] getCustomerOrders(Customer customer)
+        {
+            using (Model1Container ctx = new Model1Container())
+            {
+                return ctx.OrderSet.Select(o => o).Where(o => o.Customer == customer).ToArray();
+            }
+        }
+
     }
 }
