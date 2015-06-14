@@ -77,6 +77,10 @@ namespace UserClient
                     w.customer = user;
                     w.Show();
                 }
+                //catch (Exception ex)
+                //{
+
+                //}
                 catch (FaultException<ErrorMessage> ex)
                 {
                     LoginLabel.Content = ex.Message;

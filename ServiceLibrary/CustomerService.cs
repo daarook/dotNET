@@ -45,6 +45,7 @@ namespace ServiceLibrary
                     error.Details = "password is incorrect";
                 }
                 throw new FaultException<ErrorMessage>(error, "enable to pass checks for authenticating user");
+                //return null;
             }
         }
     }
