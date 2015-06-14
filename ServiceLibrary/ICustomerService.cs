@@ -12,7 +12,7 @@ namespace ServiceLibrary
     public interface ICustomerService
     {
         [OperationContract]
-        string Register();
+        string Register(String name);
 
         bool authenticate(string username, string password);
     }

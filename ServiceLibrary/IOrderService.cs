@@ -12,7 +12,9 @@ namespace ServiceLibrary
     public interface IOrderService
     {
         [OperationContract]
-        void placeOrder(Product product, Customer customer, int amount);
+        void placeOrder(Customer customer, Dictionary<Product,int> orderRows);
+        //public void placeOrder(Customer customer, Dictionary<Product,int> orderRows)
+
 
         [OperationContract]
         Order[] getCustomerOrders(Customer customer);
