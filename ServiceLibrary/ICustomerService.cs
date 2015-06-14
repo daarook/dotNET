@@ -15,6 +15,16 @@ namespace ServiceLibrary
         string Register(String name);
 
         [OperationContract]
+        [FaultContract(typeof(ErrorMessage))]
         Customer Authenticate(string username, string password);
+    }
+
+    [DataContract]
+    public class ErrorMessage
+    {
+        [DataMember]
+        public string Message { get; set; }
+        [DataMember]
+        public string Details { get; set; }
     }
 }

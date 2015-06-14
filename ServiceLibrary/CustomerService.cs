@@ -33,14 +33,18 @@ namespace ServiceLibrary
         {
             using (Model1Container ctx = new Model1Container())
             {
+                ErrorMessage error = new ErrorMessage();
+                error.Message = "Either the user does not exist or the password is incorrect";
+                error.Details = "user does nto exist";
                 if(ctx.CustomerSet.Any(c => c.Name == username)){
                     Customer customer = ctx.CustomerSet.Single(c => string.Equals(c.Name, username));
                     if (string.Equals(password, customer.Password))
                     {
                         return customer;
                     }
-                }            
-                throw new FaultException("customer does not exist or wrong password");
+                    error.Details = "password is incorrect";
+                }
+                throw new FaultException<ErrorMessage>(error, "enable to pass checks for authenticating user");
             }
         }
     }

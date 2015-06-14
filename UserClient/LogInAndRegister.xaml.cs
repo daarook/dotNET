@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UserClient.CustomerService;
+using System.ServiceModel;
 
 namespace UserClient
 {
@@ -68,18 +69,17 @@ namespace UserClient
                 CustomerServiceClient proxy = new CustomerServiceClient();
 
                 Customer user = null;
-                user = proxy.Authenticate(username, password);
-
-                if (user != null) //success from authenticate
+                try
                 {
+                    user = proxy.Authenticate(username, password);
                     Close();
                     MainWindow w = new MainWindow();
                     w.customer = user;
                     w.Show();
                 }
-                else
+                catch (FaultException<ErrorMessage> ex)
                 {
-                    LoginLabel.Content = "Gebruikersnaam en/of wachtwoord incorrect.";
+                    LoginLabel.Content = ex.Message;
                 }
             }
             else
