@@ -13,7 +13,7 @@ namespace ServiceLibrary
         public string Register(string name)
         {
             using(Model1Container ctx = new Model1Container()) {
-                if (ctx.CustomerSet.Any(c => c.Name == name))
+                if (ctx.CustomerSet.Any(c => c.Name.Equals(name)))
                 {
                     char[] charArray = name.ToCharArray();
                     Array.Reverse(charArray);
@@ -36,7 +36,7 @@ namespace ServiceLibrary
                 ErrorMessage error = new ErrorMessage();
                 error.Message = "Either the user does not exist or the password is incorrect";
                 error.Details = "user does nto exist";
-                if(ctx.CustomerSet.Any(c => c.Name == username)){
+                if(ctx.CustomerSet.Any(c => c.Name.Equals(username) ){
                     Customer customer = ctx.CustomerSet.Single(c => string.Equals(c.Name, username));
                     if (string.Equals(password, customer.Password))
                     {
@@ -44,6 +44,7 @@ namespace ServiceLibrary
                     }
                     error.Details = "password is incorrect";
                 }
+
                 throw new FaultException<ErrorMessage>(error, "enable to pass checks for authenticating user");
                 //return null;
             }
