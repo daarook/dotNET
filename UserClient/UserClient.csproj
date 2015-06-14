@@ -36,8 +36,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,21 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Service References\CustomerService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\OrderService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ProductService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Page Include="LogInAndRegister.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,98 +96,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\CustomerService\CustomerService.wsdl" />
-    <None Include="Service References\CustomerService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CustomerService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\OrderService.wsdl" />
-    <None Include="Service References\OrderService\UserClient.OrderService.Order.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ProductService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\ProductService.wsdl" />
-    <None Include="Service References\ProductService\UserClient.ProductService.Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\CustomerService\" />
-    <WCFMetadataStorage Include="Service References\OrderService\" />
-    <WCFMetadataStorage Include="Service References\ProductService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
