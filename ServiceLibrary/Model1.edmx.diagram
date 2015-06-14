@@ -8,8 +8,8 @@
         <EntityTypeShape EntityType="Model1.Product" Width="1.5" PointX="0.625" PointY="0.75" />
         <EntityTypeShape EntityType="Model1.Order" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="Model1.OrderEntry" Width="1.5" PointX="3" PointY="0.75" />
-        <AssociationConnector Association="Model1.OrderEntryProduct" />
         <AssociationConnector Association="Model1.OrderOrderEntry" />
+        <AssociationConnector Association="Model1.ProductOrderEntry" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

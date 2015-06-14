@@ -17,10 +17,14 @@ namespace ServiceLibrary
                 throw new ArgumentNullException("product");
             }
             product.Stock += amount;
+
         }
-        Product getProductsInStock()
+        Product[] getProductsInStock()
         {
-            return null;
+            using (Model1Container ctx = new Model1Container())
+            {
+                return ctx.ProductSet.Select(p => p).Where(p => p.Stock > 0).ToArray();
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/14/2015 11:50:21
+-- Date Created: 06/14/2015 12:10:58
 -- Generated from EDMX file: C:\Users\Milamber\Documents\Visual Studio 2013\Projects\ServiceLibrary\ServiceLibrary\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_OrderEntryProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_OrderEntryProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrderOrderEntry]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_OrderOrderEntry];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ProductSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProductSet];
+GO
+IF OBJECT_ID(N'[dbo].[OrderSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderSet];
+GO
+IF OBJECT_ID(N'[dbo].[OrderEntrySet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderEntrySet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -31,9 +46,8 @@ GO
 CREATE TABLE [dbo].[ProductSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Price] nvarchar(max)  NOT NULL,
-    [Stock] nvarchar(max)  NOT NULL,
-    [OrderEntryId] int  NOT NULL
+    [Price] int  NOT NULL,
+    [Stock] float  NOT NULL
 );
 GO
 
@@ -41,17 +55,16 @@ GO
 CREATE TABLE [dbo].[OrderSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [CustName] nvarchar(max)  NOT NULL,
-    [OrderDate] nvarchar(max)  NOT NULL
+    [OrderDate] datetime  NOT NULL
 );
 GO
 
 -- Creating table 'OrderEntrySet'
 CREATE TABLE [dbo].[OrderEntrySet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [Amount] nvarchar(max)  NOT NULL,
-    [OrderId] nvarchar(max)  NOT NULL,
-    [OrderId1] int  NOT NULL,
-    [Product_Id] int  NOT NULL
+    [Amount] int  NOT NULL,
+    [OrderId] int  NOT NULL,
+    [ProductId] int  NOT NULL
 );
 GO
 
@@ -81,25 +94,10 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Product_Id] in table 'OrderEntrySet'
-ALTER TABLE [dbo].[OrderEntrySet]
-ADD CONSTRAINT [FK_OrderEntryProduct]
-    FOREIGN KEY ([Product_Id])
-    REFERENCES [dbo].[ProductSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_OrderEntryProduct'
-CREATE INDEX [IX_FK_OrderEntryProduct]
-ON [dbo].[OrderEntrySet]
-    ([Product_Id]);
-GO
-
--- Creating foreign key on [OrderId1] in table 'OrderEntrySet'
+-- Creating foreign key on [OrderId] in table 'OrderEntrySet'
 ALTER TABLE [dbo].[OrderEntrySet]
 ADD CONSTRAINT [FK_OrderOrderEntry]
-    FOREIGN KEY ([OrderId1])
+    FOREIGN KEY ([OrderId])
     REFERENCES [dbo].[OrderSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -108,7 +106,22 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrderOrderEntry'
 CREATE INDEX [IX_FK_OrderOrderEntry]
 ON [dbo].[OrderEntrySet]
-    ([OrderId1]);
+    ([OrderId]);
+GO
+
+-- Creating foreign key on [ProductId] in table 'OrderEntrySet'
+ALTER TABLE [dbo].[OrderEntrySet]
+ADD CONSTRAINT [FK_ProductOrderEntry]
+    FOREIGN KEY ([ProductId])
+    REFERENCES [dbo].[ProductSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductOrderEntry'
+CREATE INDEX [IX_FK_ProductOrderEntry]
+ON [dbo].[OrderEntrySet]
+    ([ProductId]);
 GO
 
 -- --------------------------------------------------
