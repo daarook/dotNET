@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UserClient.CustomerService;
 
 namespace UserClient
 {
@@ -36,12 +37,23 @@ namespace UserClient
 
         private void AuthenticateUser(object sender, RoutedEventArgs e)
         {
-            bool success = true;
+            //get info from textbox
+            string username = "";
+            string password = "";
 
-            if (success)
+            //verify the input
+
+
+            //call service
+            CustomerServiceClient proxy = new CustomerServiceClient();
+
+            Customer user = proxy.Authenticate(username, password);
+
+            if (user != null) //success from authenticate
             {
                 Close();
-                new MainWindow().Show();
+                MainWindow w = new MainWindow();
+                w.customer = user;
             }
         }
     }

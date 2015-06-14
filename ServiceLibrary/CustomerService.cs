@@ -9,7 +9,7 @@ namespace ServiceLibrary
 {
     public class CustomerService : ICustomerService
     {
-        public string register(string name)
+        public string Register(string name)
         {
             using(Model1Container ctx = new Model1Container()) {
                 if (ctx.CustomerSet.Any(c => c.Name == name))
@@ -28,7 +28,7 @@ namespace ServiceLibrary
                 }             
             }
         }
-        public Customer authenticate(string username, string password)
+        public Customer Authenticate(string username, string password)
         {
             using (Model1Container ctx = new Model1Container())
             {

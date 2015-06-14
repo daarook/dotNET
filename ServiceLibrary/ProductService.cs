@@ -10,7 +10,7 @@ namespace ServiceLibrary
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class ProductService : IProductService
     {
-        public void changeProductStock(Product product, int amount)
+        public void ChangeProductStock(Product product, int amount)
         {
             if (product == null)
             {
@@ -19,7 +19,7 @@ namespace ServiceLibrary
             product.Stock += amount;
 
         }
-        public Product[] getProductsInStock()
+        public Product[] GetProductsInStock()
         {
             using (Model1Container ctx = new Model1Container())
             {

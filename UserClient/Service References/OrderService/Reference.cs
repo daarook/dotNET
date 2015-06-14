@@ -453,17 +453,17 @@ namespace UserClient.OrderService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrderService.IOrderService")]
     public interface IOrderService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/placeOrder", ReplyAction="http://tempuri.org/IOrderService/placeOrderResponse")]
-        void placeOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/PlaceOrder", ReplyAction="http://tempuri.org/IOrderService/PlaceOrderResponse")]
+        void PlaceOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/placeOrder", ReplyAction="http://tempuri.org/IOrderService/placeOrderResponse")]
-        System.Threading.Tasks.Task placeOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/PlaceOrder", ReplyAction="http://tempuri.org/IOrderService/PlaceOrderResponse")]
+        System.Threading.Tasks.Task PlaceOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/getCustomerOrdersResponse")]
-        UserClient.OrderService.Order[] getCustomerOrders(UserClient.OrderService.Customer customer);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
+        UserClient.OrderService.Order[] GetCustomerOrders(UserClient.OrderService.Customer customer);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/getCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/getCustomerOrdersResponse")]
-        System.Threading.Tasks.Task<UserClient.OrderService.Order[]> getCustomerOrdersAsync(UserClient.OrderService.Customer customer);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
+        System.Threading.Tasks.Task<UserClient.OrderService.Order[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -493,20 +493,20 @@ namespace UserClient.OrderService {
                 base(binding, remoteAddress) {
         }
         
-        public void placeOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
-            base.Channel.placeOrder(customer, orderRows);
+        public void PlaceOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
+            base.Channel.PlaceOrder(customer, orderRows);
         }
         
-        public System.Threading.Tasks.Task placeOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
-            return base.Channel.placeOrderAsync(customer, orderRows);
+        public System.Threading.Tasks.Task PlaceOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
+            return base.Channel.PlaceOrderAsync(customer, orderRows);
         }
         
-        public UserClient.OrderService.Order[] getCustomerOrders(UserClient.OrderService.Customer customer) {
-            return base.Channel.getCustomerOrders(customer);
+        public UserClient.OrderService.Order[] GetCustomerOrders(UserClient.OrderService.Customer customer) {
+            return base.Channel.GetCustomerOrders(customer);
         }
         
-        public System.Threading.Tasks.Task<UserClient.OrderService.Order[]> getCustomerOrdersAsync(UserClient.OrderService.Customer customer) {
-            return base.Channel.getCustomerOrdersAsync(customer);
+        public System.Threading.Tasks.Task<UserClient.OrderService.Order[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer) {
+            return base.Channel.GetCustomerOrdersAsync(customer);
         }
     }
 }

@@ -12,11 +12,11 @@ namespace ServiceLibrary
     public interface IOrderService
     {
         [OperationContract]
-        void placeOrder(Customer customer, Dictionary<Product,int> orderRows);
+        void PlaceOrder(Customer customer, Dictionary<Product,int> orderRows);
         //public void placeOrder(Customer customer, Dictionary<Product,int> orderRows)
 
 
         [OperationContract]
-        Order[] getCustomerOrders(Customer customer);
+        Order[] GetCustomerOrders(Customer customer);
     }
 }

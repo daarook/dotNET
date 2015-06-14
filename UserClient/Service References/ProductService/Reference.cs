@@ -110,17 +110,17 @@ namespace UserClient.ProductService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProductService.IProductService")]
     public interface IProductService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/changeProductStock", ReplyAction="http://tempuri.org/IProductService/changeProductStockResponse")]
-        void changeProductStock(UserClient.ProductService.Product product, int amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ChangeProductStock", ReplyAction="http://tempuri.org/IProductService/ChangeProductStockResponse")]
+        void ChangeProductStock(UserClient.ProductService.Product product, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/changeProductStock", ReplyAction="http://tempuri.org/IProductService/changeProductStockResponse")]
-        System.Threading.Tasks.Task changeProductStockAsync(UserClient.ProductService.Product product, int amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/ChangeProductStock", ReplyAction="http://tempuri.org/IProductService/ChangeProductStockResponse")]
+        System.Threading.Tasks.Task ChangeProductStockAsync(UserClient.ProductService.Product product, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getProductsInStock", ReplyAction="http://tempuri.org/IProductService/getProductsInStockResponse")]
-        UserClient.ProductService.Product[] getProductsInStock();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductsInStock", ReplyAction="http://tempuri.org/IProductService/GetProductsInStockResponse")]
+        UserClient.ProductService.Product[] GetProductsInStock();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getProductsInStock", ReplyAction="http://tempuri.org/IProductService/getProductsInStockResponse")]
-        System.Threading.Tasks.Task<UserClient.ProductService.Product[]> getProductsInStockAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductsInStock", ReplyAction="http://tempuri.org/IProductService/GetProductsInStockResponse")]
+        System.Threading.Tasks.Task<UserClient.ProductService.Product[]> GetProductsInStockAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,20 +150,20 @@ namespace UserClient.ProductService {
                 base(binding, remoteAddress) {
         }
         
-        public void changeProductStock(UserClient.ProductService.Product product, int amount) {
-            base.Channel.changeProductStock(product, amount);
+        public void ChangeProductStock(UserClient.ProductService.Product product, int amount) {
+            base.Channel.ChangeProductStock(product, amount);
         }
         
-        public System.Threading.Tasks.Task changeProductStockAsync(UserClient.ProductService.Product product, int amount) {
-            return base.Channel.changeProductStockAsync(product, amount);
+        public System.Threading.Tasks.Task ChangeProductStockAsync(UserClient.ProductService.Product product, int amount) {
+            return base.Channel.ChangeProductStockAsync(product, amount);
         }
         
-        public UserClient.ProductService.Product[] getProductsInStock() {
-            return base.Channel.getProductsInStock();
+        public UserClient.ProductService.Product[] GetProductsInStock() {
+            return base.Channel.GetProductsInStock();
         }
         
-        public System.Threading.Tasks.Task<UserClient.ProductService.Product[]> getProductsInStockAsync() {
-            return base.Channel.getProductsInStockAsync();
+        public System.Threading.Tasks.Task<UserClient.ProductService.Product[]> GetProductsInStockAsync() {
+            return base.Channel.GetProductsInStockAsync();
         }
     }
 }

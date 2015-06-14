@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserClient.CustomerService;
 
 namespace UserClient
 {
@@ -20,6 +21,7 @@ namespace UserClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Customer customer { get; set; }
         public MainWindow()
         {
             InitializeComponent();
