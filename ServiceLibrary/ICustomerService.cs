@@ -9,9 +9,11 @@ namespace ServiceLibrary
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService2" in both code and config file together.
     [ServiceContract]
-    public interface IUserService
+    public interface ICustomerService
     {
         [OperationContract]
-        void DoWork();
+        string Register();
+
+        bool authenticate(string username, string password);
     }
 }
