@@ -16,7 +16,7 @@ namespace ServiceLibrary
             {
                 throw new ArgumentNullException("product");
             }
-            product.Stock = product.Stock + amount;
+            product.Stock += amount;
         }
         Product getProductsInStock()
         {
