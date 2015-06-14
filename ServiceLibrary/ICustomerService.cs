@@ -12,8 +12,8 @@ namespace ServiceLibrary
     public interface ICustomerService
     {
         [OperationContract]
-        string Register(String name);
+        string register(String name);
 
-        bool authenticate(string username, string password);
+        Customer authenticate(string username, string password);
     }
 }
