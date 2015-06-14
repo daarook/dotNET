@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/14/2015 12:23:48
+-- Date Created: 06/14/2015 16:30:06
 -- Generated from EDMX file: C:\Users\Milamber\Documents\Visual Studio 2013\Projects\ServiceLibrary\ServiceLibrary\Model1.edmx
 -- --------------------------------------------------
 
@@ -23,6 +23,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ProductOrderEntry]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrderEntrySet] DROP CONSTRAINT [FK_ProductOrderEntry];
 GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerOrder]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderSet] DROP CONSTRAINT [FK_CustomerOrder];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -36,6 +39,9 @@ IF OBJECT_ID(N'[dbo].[OrderSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[OrderEntrySet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[OrderEntrySet];
+GO
+IF OBJECT_ID(N'[dbo].[CustomerSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CustomerSet];
 GO
 
 -- --------------------------------------------------
@@ -72,7 +78,8 @@ GO
 CREATE TABLE [dbo].[CustomerSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Password] nvarchar(max)  NOT NULL
+    [Password] nvarchar(max)  NOT NULL,
+    [Saldo] float  NOT NULL
 );
 GO
 

@@ -56,6 +56,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Saldo" Type="float" Nullable="false" />
   </EntityType>
   <Association Name="OrderOrderEntry">
     <End Role="Order" Type="Model1.Store.OrderSet" Multiplicity="1" />
@@ -177,6 +178,7 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order" />
+          <Property Name="Saldo" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="CustomerOrder">
           <End Type="Model1.Customer" Role="Customer" Multiplicity="1" />
@@ -231,6 +233,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Saldo" ColumnName="Saldo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -17,7 +17,7 @@ namespace ServiceLibrary
                     char[] charArray = name.ToCharArray();
                     Array.Reverse(name.ToCharArray());
                     string password = new string(charArray);
-                    Customer customer = new Customer { Name = name, Password = password};
+                    Customer customer = new Customer { Name = name, Password = password, Saldo=50.0};
                     ctx.CustomerSet.Add(customer);
                     ctx.SaveChanges();
                     return password;
@@ -28,11 +28,18 @@ namespace ServiceLibrary
                 }             
             }
         }
-        public bool authenticate(string username, string password)
+        public Customer authenticate(string username, string password)
         {
             using (Model1Container ctx = new Model1Container())
             {
-                return string.Equals(password,((Customer)ctx.CustomerSet.Select(c => c).Where(c => string.Equals(c.Name , username))).Password);
+                if(ctx.CustomerSet.Any(c => c.Name == username)){
+                    Customer customer = ctx.CustomerSet.Single(c => string.Equals(c.Name, username));
+                    if (string.Equals(password, customer.Password))
+                    {
+                        return customer;
+                    }
+                }            
+                throw new FaultException("customer does not exist or wrong password");
             }
         }
     }
