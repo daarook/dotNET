@@ -20,9 +20,10 @@ namespace ServiceLibrary
         }
     
         public int Id { get; set; }
-        public string CustName { get; set; }
-        public string OrderDate { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public int CustomerId { get; set; }
     
         public virtual ICollection<OrderEntry> OrderEntry { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
