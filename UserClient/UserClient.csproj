@@ -151,10 +151,10 @@
     <None Include="Service References\ProductService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProductService\ProductService.wsdl" />
-    <None Include="Service References\ProductService\UserClient.ProductService.Product.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\ProductService\item3.xsd">
+      <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ProductService\ProductService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

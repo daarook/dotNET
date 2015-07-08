@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections;
 using UserClient.ProductService;
 using UserClient.CustomerService;
 
@@ -41,7 +42,15 @@ namespace UserClient
         private void RefreshStore(object sender, RoutedEventArgs e)
         {
             ProductServiceClient proxy = new ProductServiceClient();
+            ArrayList products = null;
+            try
+            {
+                products = proxy.GetProductsInStock();
+            }
+            catch (Exception e)
+            {
 
+            }
         }
     }
 }

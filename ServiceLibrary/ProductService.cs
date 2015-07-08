@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Collections;
 
 namespace ServiceLibrary
 {
@@ -20,12 +21,25 @@ namespace ServiceLibrary
             product.Stock += amount;
 
         }
-        public Product[] GetProductsInStock()
+        public ArrayList GetProductsInStock()
         {
             using (Model1Container ctx = new Model1Container())
             {
-                return ctx.ProductSet.Select(p => p).Where(p => p.Stock > 0).ToArray();
+                Product[] prods = ctx.ProductSet.Select(p => p).Where(p => p.Stock > 0).ToArray();
+                ArrayList products = new ArrayList();
+                foreach(Product prod in prods) {
+                    products.Add(createDTO(prod));
+                }
+                return products;
             }
+        }
+        private ProductDTO createDTO(Product prod)
+        {
+            ProductDTO product = new ProductDTO();
+            product.Name = prod.Name;
+            product.Price = prod.Price;
+            product.Stock = prod.Stock;
+            return product;
         }
     }
 }

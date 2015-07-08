@@ -372,10 +372,10 @@ namespace UserClient.OrderService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PriceField;
+        private double PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double StockField;
+        private int StockField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -414,7 +414,7 @@ namespace UserClient.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Price {
+        public double Price {
             get {
                 return this.PriceField;
             }
@@ -427,7 +427,7 @@ namespace UserClient.OrderService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Stock {
+        public int Stock {
             get {
                 return this.StockField;
             }

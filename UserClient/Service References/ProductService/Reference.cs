@@ -29,10 +29,10 @@ namespace UserClient.ProductService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PriceField;
+        private double PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private double StockField;
+        private int StockField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -71,7 +71,7 @@ namespace UserClient.ProductService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Price {
+        public double Price {
             get {
                 return this.PriceField;
             }
@@ -84,7 +84,7 @@ namespace UserClient.ProductService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Stock {
+        public int Stock {
             get {
                 return this.StockField;
             }
@@ -117,10 +117,12 @@ namespace UserClient.ProductService {
         System.Threading.Tasks.Task ChangeProductStockAsync(UserClient.ProductService.Product product, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductsInStock", ReplyAction="http://tempuri.org/IProductService/GetProductsInStockResponse")]
-        UserClient.ProductService.Product[] GetProductsInStock();
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.ProductService.Product))]
+        object[] GetProductsInStock();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/GetProductsInStock", ReplyAction="http://tempuri.org/IProductService/GetProductsInStockResponse")]
-        System.Threading.Tasks.Task<UserClient.ProductService.Product[]> GetProductsInStockAsync();
+        System.Threading.Tasks.Task<object[]> GetProductsInStockAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -158,11 +160,11 @@ namespace UserClient.ProductService {
             return base.Channel.ChangeProductStockAsync(product, amount);
         }
         
-        public UserClient.ProductService.Product[] GetProductsInStock() {
+        public object[] GetProductsInStock() {
             return base.Channel.GetProductsInStock();
         }
         
-        public System.Threading.Tasks.Task<UserClient.ProductService.Product[]> GetProductsInStockAsync() {
+        public System.Threading.Tasks.Task<object[]> GetProductsInStockAsync() {
             return base.Channel.GetProductsInStockAsync();
         }
     }

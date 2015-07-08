@@ -29,8 +29,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Price" Type="int" Nullable="false" />
-    <Property Name="Stock" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Stock" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderSet">
     <Key>
@@ -122,8 +122,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
-          <Property Name="Stock" Type="Double" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
