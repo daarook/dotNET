@@ -22,7 +22,7 @@ namespace UserClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Customer customer { get; set; }
+        public CustomerDTO customer { get; set; }
         public MainWindow()
         {
             InitializeComponent();

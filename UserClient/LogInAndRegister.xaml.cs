@@ -68,7 +68,7 @@ namespace UserClient
                 //call service
                 CustomerServiceClient proxy = new CustomerServiceClient();
 
-                Customer user = null;
+                CustomerDTO user = null;
                 try
                 {
                     user = proxy.Authenticate(username, password);

@@ -15,7 +15,8 @@ namespace ServiceLibrary
         string Register(String name);
 
         [OperationContract]
-        Customer Authenticate(string username, string password);
+        [FaultContract(typeof(ErrorMessage))]
+        CustomerDTO Authenticate(string username, string password);
     }
 
     [DataContract]
@@ -25,5 +26,19 @@ namespace ServiceLibrary
         public string Message { get; set; }
         [DataMember]
         public string Details { get; set; }
+    }
+
+    //TODO DTO objecten om te versturen over de lijn
+    [DataContract]
+    public class CustomerDTO
+    {
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
+
+        [DataMember]
+        public double Saldo { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace ServiceLibrary
                 }             
             }
         }
-        public Customer Authenticate(string username, string password)
+        public CustomerDTO Authenticate(string username, string password)
         {
             using (Model1Container ctx = new Model1Container())
             {
@@ -40,13 +40,20 @@ namespace ServiceLibrary
                     Customer customer = ctx.CustomerSet.Single(c => string.Equals(c.Name, username));
                     if (string.Equals(password, customer.Password))
                     {
-                        return customer;
+                        return createDTO(customer);
                     }
                     error.Details = "password is incorrect";
                 }
                 throw new FaultException<ErrorMessage>(error, error.Details);
-                //return null;
             }
+        }
+        private CustomerDTO createDTO(Customer customer)
+        {
+            CustomerDTO cus = new CustomerDTO();
+            cus.Name = customer.Name;
+            cus.Password = customer.Password;
+            cus.Saldo = customer.Saldo;
+            return cus;
         }
     }
 }
