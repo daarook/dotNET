@@ -13,10 +13,32 @@ namespace ServiceLibrary
     {
         [OperationContract]
         void PlaceOrder(Customer customer, Dictionary<Product,int> orderRows);
-        //public void placeOrder(Customer customer, Dictionary<Product,int> orderRows)
-
 
         [OperationContract]
         Order[] GetCustomerOrders(Customer customer);
+    }
+
+    [DataContract]
+    public class OrderDTO
+    {
+        [DataMember]
+        public DateTime OrderDate { get; set; }
+
+        [DataMember]
+        public int CustomerID { get; set; }
+
+        [DataMember]
+        public OrderEntryDTO[] entries { get; set; }
+
+    }
+
+    [DataContract]
+    public class OrderEntryDTO
+    {
+        [DataMember]
+        public int Amount { get; set; }
+
+        [DataMember]
+        public int ProductID { get; set; }
     }
 }

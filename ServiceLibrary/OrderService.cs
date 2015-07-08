@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Collections;
 
 namespace ServiceLibrary
 {
@@ -27,13 +28,37 @@ namespace ServiceLibrary
                 ctx.SaveChanges();
             }
         }
-        public Order[] GetCustomerOrders(Customer customer)
+        public ArrayList GetCustomerOrders(Customer customer)
         {
             using (Model1Container ctx = new Model1Container())
             {
-                return ctx.OrderSet.Select(o => o).Where(o => o.Customer == customer).ToArray();
+
+                Order[] ords = ctx.OrderSet.Select(o => o).Where(o => o.Customer == customer).ToArray();
+                ArrayList orders = new ArrayList();
+                foreach (Order ord in ords)
+                {
+                    orders.Add(createDTO(ord));
+                }
+                return orders;
             }
         }
-
+        private OrderDTO createDTO(Order ord)
+        {
+            OrderDTO order = new OrderDTO();
+            order.CustomerID = ord.CustomerId;
+            order.OrderDate = ord.OrderDate;
+            OrderEntryDTO[] entries = new OrderEntryDTO[ord.OrderEntry.Count];
+            int i = 0;
+            foreach (OrderEntry ent in ord.OrderEntry)
+            {
+                OrderEntryDTO entry = new OrderEntryDTO();
+                entry.Amount = ent.Amount;
+                entry.ProductID = ent.ProductId;
+                entries[i] = entry;
+                i++;
+            }
+            order.entries = entries;
+            return order;
+        }
     }
 }
