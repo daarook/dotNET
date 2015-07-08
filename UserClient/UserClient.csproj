@@ -139,9 +139,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OrderService\OrderService.wsdl" />
-    <None Include="Service References\OrderService\UserClient.OrderService.Order.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ProductService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -151,10 +148,10 @@
     <None Include="Service References\ProductService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ProductService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ProductService\ProductService.wsdl" />
+    <None Include="Service References\ProductService\UserClient.ProductService.ProductDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

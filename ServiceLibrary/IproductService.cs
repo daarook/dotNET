@@ -16,7 +16,7 @@ namespace ServiceLibrary
         void ChangeProductStock(Product product, int amount);
 
         [OperationContract]
-        ArrayList GetProductsInStock(); 
+        ProductDTO[] GetProductsInStock(); 
     }
     [DataContract]
     public class ProductDTO

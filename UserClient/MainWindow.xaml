@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="AliceBlue" UseLayoutRounding="False">
-        <ListBox HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
+        <ListBox x:Name="Stock" HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
             <ListBoxItem Content="Product1: 5 stuks; 1.28"/>
             <ListBoxItem Content="Product2: 1 stuks; 0.93"/>
             <ListBoxItem Content="Product3: 8 stuks; 3.12"/>

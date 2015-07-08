@@ -42,12 +42,19 @@ namespace UserClient
         private void RefreshStore(object sender, RoutedEventArgs e)
         {
             ProductServiceClient proxy = new ProductServiceClient();
-            ArrayList products = null;
+            ProductDTO[] products = null;
             try
             {
                 products = proxy.GetProductsInStock();
+                Stock.Items.Clear();
+                foreach (ProductDTO product in products)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = "test";
+                    Stock.Items.Add(item);
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
 
             }

@@ -460,10 +460,18 @@ namespace UserClient.OrderService {
         System.Threading.Tasks.Task PlaceOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
-        UserClient.OrderService.Order[] GetCustomerOrders(UserClient.OrderService.Customer customer);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Customer))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Order[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Order))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.OrderEntry[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.OrderEntry))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Product))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
+        object[] GetCustomerOrders(UserClient.OrderService.Customer customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
-        System.Threading.Tasks.Task<UserClient.OrderService.Order[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer);
+        System.Threading.Tasks.Task<object[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -501,11 +509,11 @@ namespace UserClient.OrderService {
             return base.Channel.PlaceOrderAsync(customer, orderRows);
         }
         
-        public UserClient.OrderService.Order[] GetCustomerOrders(UserClient.OrderService.Customer customer) {
+        public object[] GetCustomerOrders(UserClient.OrderService.Customer customer) {
             return base.Channel.GetCustomerOrders(customer);
         }
         
-        public System.Threading.Tasks.Task<UserClient.OrderService.Order[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer) {
+        public System.Threading.Tasks.Task<object[]> GetCustomerOrdersAsync(UserClient.OrderService.Customer customer) {
             return base.Channel.GetCustomerOrdersAsync(customer);
         }
     }

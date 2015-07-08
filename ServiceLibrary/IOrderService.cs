@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Collections;
 
 namespace ServiceLibrary
 {
@@ -15,7 +16,7 @@ namespace ServiceLibrary
         void PlaceOrder(Customer customer, Dictionary<Product,int> orderRows);
 
         [OperationContract]
-        Order[] GetCustomerOrders(Customer customer);
+        ArrayList GetCustomerOrders(Customer customer);
     }
 
     [DataContract]

@@ -21,7 +21,7 @@ namespace ServiceLibrary
             product.Stock += amount;
 
         }
-        public ArrayList GetProductsInStock()
+        public ProductDTO[] GetProductsInStock()
         {
             using (Model1Container ctx = new Model1Container())
             {
@@ -30,7 +30,7 @@ namespace ServiceLibrary
                 foreach(Product prod in prods) {
                     products.Add(createDTO(prod));
                 }
-                return products;
+                return (ProductDTO[]) products.ToArray();
             }
         }
         private ProductDTO createDTO(Product prod)
