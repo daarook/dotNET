@@ -5,7 +5,7 @@
     <Grid Background="AliceBlue" UseLayoutRounding="False">
         <ListBox x:Name="Stock" HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
         </ListBox>
-        <ListBox Name="Bought" HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
+        <ListBox Name="Inventory" HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
         </ListBox>
         <Label Content="Winkel voorraad" HorizontalAlignment="Left" Margin="44,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Gekochte producten" HorizontalAlignment="Left" Margin="303,24,0,0" VerticalAlignment="Top"/>

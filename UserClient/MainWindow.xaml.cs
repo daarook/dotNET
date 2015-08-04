@@ -54,6 +54,27 @@ namespace UserClient
         {
             OrderServiceClient proxy = new OrderServiceClient();
             OrderDTO[] orders = proxy.GetCustomerOrders(customer.Name);
+            Dictionary<string,int> products = new Dictionary<string,int>();
+            foreach (OrderDTO order in orders)
+            {
+                foreach (OrderEntryDTO entry in order.entries)
+                {
+                    if (products.ContainsKey("" + entry.ProductID))
+                    {
+                        products["" + entry.ProductID] += entry.Amount;
+                    }
+                    else
+                    {
+                        products.Add("" + entry.ProductID, entry.Amount);
+                    }
+                }
+            }
+            foreach (KeyValuePair<string, int> entry in products)
+            {
+                ListBoxItem item = new ListBoxItem();
+                item.Content = entry.Key + " , " + entry.Value;
+                Inventory.Items.Add(item);
+            }
         }
 
         private void BuyProduct(object sender, RoutedEventArgs e)
