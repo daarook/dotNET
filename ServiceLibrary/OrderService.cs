@@ -39,16 +39,17 @@ namespace ServiceLibrary
                 ctx.SaveChanges();
             }
         }
-        public ArrayList GetCustomerOrders(string customerName)
+        public OrderDTO[] GetCustomerOrders(string customerName)
         {
             using (Model1Container ctx = new Model1Container())
             {
                 Customer customer = ctx.CustomerSet.First(c => c.Name == customerName);
                 Order[] ords = ctx.OrderSet.Select(o => o).Where(o => o.Customer == customer).ToArray();
-                ArrayList orders = new ArrayList();
-                foreach (Order ord in ords)
+                OrderDTO[] orders = new OrderDTO[ords.Length];
+
+                for (int i = 0; i < orders.Length; i++)
                 {
-                    orders.Add(createDTO(ord));
+                    orders[i] = createDTO(ords[i]);
                 }
                 return orders;
             }

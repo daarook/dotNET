@@ -16,7 +16,7 @@ namespace ServiceLibrary
         void PlaceOrder(string customerName, Dictionary<string,int> orderRows);
 
         [OperationContract]
-        ArrayList GetCustomerOrders(string customerName);
+        OrderDTO[] GetCustomerOrders(string customerName);
     }
 
     [DataContract]
