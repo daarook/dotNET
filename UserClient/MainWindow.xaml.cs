@@ -69,6 +69,7 @@ namespace UserClient
                     }
                 }
             }
+            Inventory.Items.Clear();
             foreach (KeyValuePair<string, int> entry in products)
             {
                 ListBoxItem item = new ListBoxItem();
