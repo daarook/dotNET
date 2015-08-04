@@ -24,8 +24,23 @@ namespace StoreHost
             host3.Open();
             Console.WriteLine("ProductService active");
 
-            Console.WriteLine("Press any key to close server");
-            Console.ReadKey();
+            Console.WriteLine("Enter command... (Type help for a list of commands)");
+            while(true){
+                String input = Console.ReadLine();
+                if (input == "help")
+                {
+                    Console.WriteLine("testproducts -- Adds a number of testproducts to the store");
+                    Console.WriteLine("exit -- shuts down the program");
+                }
+                else if (input == "testproducts")
+                {
+                    //add products here
+                }
+                else if (input == "exit")
+                {
+                    break;
+                }
+            }
         
         }
     }
