@@ -454,20 +454,20 @@ namespace UserClient.OrderService {
     public interface IOrderService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/PlaceOrder", ReplyAction="http://tempuri.org/IOrderService/PlaceOrderResponse")]
-        void PlaceOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
+        void PlaceOrder(string customerName, System.Collections.Generic.Dictionary<string, int> orderRows);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/PlaceOrder", ReplyAction="http://tempuri.org/IOrderService/PlaceOrderResponse")]
-        System.Threading.Tasks.Task PlaceOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows);
+        System.Threading.Tasks.Task PlaceOrderAsync(string customerName, System.Collections.Generic.Dictionary<string, int> orderRows);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<string, int>))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Customer))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Order[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Order))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.OrderEntry[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.OrderEntry))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(UserClient.OrderService.Product))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int>))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
         object[] GetCustomerOrders(UserClient.OrderService.Customer customer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrderService/GetCustomerOrders", ReplyAction="http://tempuri.org/IOrderService/GetCustomerOrdersResponse")]
@@ -501,12 +501,12 @@ namespace UserClient.OrderService {
                 base(binding, remoteAddress) {
         }
         
-        public void PlaceOrder(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
-            base.Channel.PlaceOrder(customer, orderRows);
+        public void PlaceOrder(string customerName, System.Collections.Generic.Dictionary<string, int> orderRows) {
+            base.Channel.PlaceOrder(customerName, orderRows);
         }
         
-        public System.Threading.Tasks.Task PlaceOrderAsync(UserClient.OrderService.Customer customer, System.Collections.Generic.Dictionary<UserClient.OrderService.Product, int> orderRows) {
-            return base.Channel.PlaceOrderAsync(customer, orderRows);
+        public System.Threading.Tasks.Task PlaceOrderAsync(string customerName, System.Collections.Generic.Dictionary<string, int> orderRows) {
+            return base.Channel.PlaceOrderAsync(customerName, orderRows);
         }
         
         public object[] GetCustomerOrders(UserClient.OrderService.Customer customer) {
