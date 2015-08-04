@@ -41,5 +41,8 @@ namespace ServiceLibrary
 
         [DataMember]
         public int ProductID { get; set; }
+
+        [DataMember]
+        public string ProductName { get; set; }
     }
 }

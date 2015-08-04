@@ -59,13 +59,13 @@ namespace UserClient
             {
                 foreach (OrderEntryDTO entry in order.entries)
                 {
-                    if (products.ContainsKey("" + entry.ProductID))
+                    if (products.ContainsKey(entry.ProductName))
                     {
-                        products["" + entry.ProductID] += entry.Amount;
+                        products[entry.ProductName] += entry.Amount;
                     }
                     else
                     {
-                        products.Add("" + entry.ProductID, entry.Amount);
+                        products.Add(entry.ProductName, entry.Amount);
                     }
                 }
             }

@@ -61,13 +61,17 @@ namespace ServiceLibrary
             order.OrderDate = ord.OrderDate;
             OrderEntryDTO[] entries = new OrderEntryDTO[ord.OrderEntry.Count];
             int i = 0;
-            foreach (OrderEntry ent in ord.OrderEntry)
+            using (Model1Container ctx = new Model1Container())
             {
-                OrderEntryDTO entry = new OrderEntryDTO();
-                entry.Amount = ent.Amount;
-                entry.ProductID = ent.ProductId;
-                entries[i] = entry;
-                i++;
+                foreach (OrderEntry ent in ord.OrderEntry)
+                {
+                    OrderEntryDTO entry = new OrderEntryDTO();
+                    entry.Amount = ent.Amount;
+                    entry.ProductID = ent.ProductId;
+                    entry.ProductName = ent.Product.Name;
+                    entries[i] = entry;
+                    i++;
+                }
             }
             order.entries = entries;
             return order;
