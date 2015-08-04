@@ -42,7 +42,7 @@ namespace UserClient
             RefreshStore(null,null);
             RefreshUser();
             RefreshInventory();
-            Saldo.Text = ""+customer.Saldo;
+            Saldo.Content = ""+customer.Saldo;
             Saldo.UpdateLayout();
         }
         private void RefreshUser()
