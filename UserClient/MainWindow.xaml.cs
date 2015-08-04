@@ -50,7 +50,7 @@ namespace UserClient
                 foreach (ProductDTO product in products)
                 {
                     ListBoxItem item = new ListBoxItem();
-                    item.Content = "test";
+                    item.Content = String.Format("{0} - Prijs: {1} - Voorraad: {2}",product.Name, product.Price, product.Stock);
                     Stock.Items.Add(item);
                 }
             }
