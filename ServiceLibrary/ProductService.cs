@@ -30,7 +30,9 @@ namespace ServiceLibrary
                 foreach(Product prod in prods) {
                     products.Add(createDTO(prod));
                 }
-                return (ProductDTO[]) products.ToArray();
+                Object[] temp = products.ToArray();
+                ProductDTO[] result = Array.ConvertAll(temp, x => (ProductDTO)x);
+                return result;
             }
         }
         public void addProduct(string name, double price, int stock)
