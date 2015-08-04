@@ -33,6 +33,22 @@ namespace ServiceLibrary
                 return (ProductDTO[]) products.ToArray();
             }
         }
+        public void addProduct(string name, double price, int stock)
+        {
+            using (Model1Container ctx = new Model1Container())
+            {
+                if (!ctx.ProductSet.Any(c => c.Name == name))
+                {
+                    Product p = new Product { Name = name, Price = price, Stock = stock};
+                    ctx.ProductSet.Add(p);
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    throw new FaultException("product already exists");
+                }
+            }
+        }
         private ProductDTO createDTO(Product prod)
         {
             ProductDTO product = new ProductDTO();
