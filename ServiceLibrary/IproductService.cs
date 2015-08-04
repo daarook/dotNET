@@ -16,7 +16,10 @@ namespace ServiceLibrary
         void ChangeProductStock(Product product, int amount);
 
         [OperationContract]
-        ProductDTO[] GetProductsInStock(); 
+        ProductDTO[] GetProductsInStock();
+
+        [OperationContract]
+        void addProduct(string name, double price, int stock);
     }
     [DataContract]
     public class ProductDTO
