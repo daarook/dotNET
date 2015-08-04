@@ -25,14 +25,22 @@ namespace UserClient
     public partial class MainWindow : Window
     {
         public CustomerDTO customer { get; set; }
-        public MainWindow()
+        public MainWindow(CustomerDTO user)
         {
+            customer = user;
             InitializeComponent();
+            UpdateView();
         }
 
         private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void UpdateView()
+        {
+            RefreshStore(null,null);
+
+            Saldo.Content = customer.Saldo;
         }
 
         private void BuyProduct(object sender, RoutedEventArgs e)
@@ -44,7 +52,7 @@ namespace UserClient
             try
             {
                 proxy.PlaceOrder(customer.Name, orderRows);
-                RefreshStore(null,null);
+                UpdateView();
             }
             catch (Exception ex)
             {

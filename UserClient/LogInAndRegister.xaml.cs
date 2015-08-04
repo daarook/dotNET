@@ -73,9 +73,9 @@ namespace UserClient
                 {
                     user = proxy.Authenticate(username, password);
                     
-                    MainWindow w = new MainWindow();
-                    w.customer = user;
+                    MainWindow w = new MainWindow(user);
                     w.Show();
+
                     Close();
                 }
                 //catch (Exception ex)

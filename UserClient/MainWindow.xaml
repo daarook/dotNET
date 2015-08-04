@@ -5,14 +5,13 @@
     <Grid Background="AliceBlue" UseLayoutRounding="False">
         <ListBox x:Name="Stock" HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
         </ListBox>
-        <ListBox HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
-            <ListBoxItem Content="Product2: 3 stuks" Selected="ListBoxItem_Selected"/>
+        <ListBox Name="Bought" HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
         </ListBox>
         <Label Content="Winkel voorraad" HorizontalAlignment="Left" Margin="44,24,0,0" VerticalAlignment="Top"/>
         <Label Content="Gekochte producten" HorizontalAlignment="Left" Margin="303,24,0,0" VerticalAlignment="Top"/>
         <Button Content="Koop product" HorizontalAlignment="Left" Margin="44,244,0,0" VerticalAlignment="Top" Width="96" Click="BuyProduct"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="145,27,0,0" VerticalAlignment="Top" Width="51" Click="RefreshStore"/>
         <Label Content="Saldo:" HorizontalAlignment="Left" Margin="303,245,0,0" VerticalAlignment="Top"/>
-        <Label Content="50.00" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
+        <Label Name="Saldo" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
     </Grid>
 </Window>
