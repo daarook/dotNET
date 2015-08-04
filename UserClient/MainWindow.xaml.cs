@@ -40,7 +40,7 @@ namespace UserClient
         {
             RefreshStore(null,null);
 
-            Saldo.Content = customer.Saldo;
+            Saldo.Text = ""+customer.Saldo;
         }
 
         private void BuyProduct(object sender, RoutedEventArgs e)

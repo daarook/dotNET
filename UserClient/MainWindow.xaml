@@ -12,6 +12,6 @@
         <Button Content="Koop product" HorizontalAlignment="Left" Margin="44,244,0,0" VerticalAlignment="Top" Width="96" Click="BuyProduct"/>
         <Button Content="Refresh" HorizontalAlignment="Left" Margin="145,27,0,0" VerticalAlignment="Top" Width="51" Click="RefreshStore"/>
         <Label Content="Saldo:" HorizontalAlignment="Left" Margin="303,245,0,0" VerticalAlignment="Top"/>
-        <Label Name="Saldo" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
+        <TextBox Name="Saldo" IsReadOnly="True" HorizontalAlignment="Left" Margin="350,245,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.406,2.625"/>
     </Grid>
 </Window>
