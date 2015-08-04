@@ -41,7 +41,14 @@ namespace UserClient
             OrderServiceClient proxy = new OrderServiceClient();
             Dictionary<string,int> orderRows = new Dictionary<string,int>();
             orderRows.Add(selected.Tag.ToString(), 1);
-            proxy.PlaceOrder("", orderRows);
+            try
+            {
+                proxy.PlaceOrder(customer.Name, orderRows);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void RefreshStore(object sender, RoutedEventArgs e)
