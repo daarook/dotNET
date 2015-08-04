@@ -38,9 +38,21 @@ namespace UserClient
         }
         private void UpdateView()
         {
-            RefreshStore(null,null);
 
+            RefreshStore(null,null);
+            RefreshUser();
+            RefreshInventory();
             Saldo.Text = ""+customer.Saldo;
+            Saldo.UpdateLayout();
+        }
+        private void RefreshUser()
+        {
+            CustomerServiceClient proxy = new CustomerServiceClient();
+            customer = proxy.Authenticate(customer.Name, customer.Password);
+        }
+        private void RefreshInventory()
+        {
+
         }
 
         private void BuyProduct(object sender, RoutedEventArgs e)
