@@ -4,10 +4,6 @@
         Title="MainWindow" Height="350" Width="525">
     <Grid Background="AliceBlue" UseLayoutRounding="False">
         <ListBox x:Name="Stock" HorizontalAlignment="Left" Height="184" Margin="44,55,0,0" VerticalAlignment="Top" Width="152">
-            <ListBoxItem Content="Product1: 5 stuks; 1.28"/>
-            <ListBoxItem Content="Product2: 1 stuks; 0.93"/>
-            <ListBoxItem Content="Product3: 8 stuks; 3.12"/>
-            <ListBoxItem Content="Product4: 10 stuks; 1.75"/>
         </ListBox>
         <ListBox HorizontalAlignment="Left" Height="184" Margin="303,55,0,0" VerticalAlignment="Top" Width="139">
             <ListBoxItem Content="Product2: 3 stuks" Selected="ListBoxItem_Selected"/>

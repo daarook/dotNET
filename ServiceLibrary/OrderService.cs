@@ -12,18 +12,29 @@ namespace ServiceLibrary
     public class OrderService : IOrderService
     {
         Type providerService = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
-        public void PlaceOrder(Customer customer, Dictionary<Product,int> orderRows)
+        public void PlaceOrder(string customerName, Dictionary<string,int> orderRows)
         {
             using (Model1Container ctx = new Model1Container())
             {
+                Customer customer = ctx.CustomerSet.First(c => c.Name == customerName);
                 Order order = new Order { OrderDate = DateTime.Now, Customer = customer };
                 ctx.OrderSet.Add(order);
-                foreach (KeyValuePair<Product, int> row in orderRows)
+                foreach (KeyValuePair<string, int> row in orderRows)
                 {
-                    Product product = row.Key;
+                    Product product = ctx.ProductSet.First(c => c.Name == row.Key);
                     int amount = row.Value;
                     OrderEntry orderEntry = new OrderEntry { Product = product, Amount = amount, Order = order };
                     ctx.OrderEntrySet.Add(orderEntry);
+                    customer.Saldo += -product.Price * amount;
+                    if (customer.Saldo < 0)
+                    {
+                        throw new FaultException("Not enough balance remaining");
+                    }
+                    product.Stock += -amount;
+                    if (product.Stock < 0)
+                    {
+                        throw new FaultException("Not enough stock remaining");
+                    }
                 }
                 ctx.SaveChanges();
             }

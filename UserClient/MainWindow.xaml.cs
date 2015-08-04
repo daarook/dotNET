@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Collections;
 using UserClient.ProductService;
 using UserClient.CustomerService;
+using UserClient.OrderService;
 
 namespace UserClient
 {
@@ -36,7 +37,11 @@ namespace UserClient
 
         private void BuyProduct(object sender, RoutedEventArgs e)
         {
-
+            ListBoxItem selected = (ListBoxItem)Stock.SelectedValue;
+            OrderServiceClient proxy = new OrderServiceClient();
+            Dictionary<string,int> orderRows = new Dictionary<string,int>();
+            orderRows.Add(selected.Tag.ToString(), 1);
+            proxy.PlaceOrder("", orderRows);
         }
 
         private void RefreshStore(object sender, RoutedEventArgs e)
@@ -51,6 +56,7 @@ namespace UserClient
                 {
                     ListBoxItem item = new ListBoxItem();
                     item.Content = String.Format("{0} - Prijs: {1} - Voorraad: {2}",product.Name, product.Price, product.Stock);
+                    item.Tag = product.Name;
                     Stock.Items.Add(item);
                 }
             }
