@@ -19,6 +19,12 @@
   <wsdl:message name="IProductService_GetProductsInStock_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsInStockResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_addProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:addProduct" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_addProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addProductResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="ChangeProductStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/ChangeProductStock" message="tns:IProductService_ChangeProductStock_InputMessage" />
@@ -27,6 +33,10 @@
     <wsdl:operation name="GetProductsInStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetProductsInStock" message="tns:IProductService_GetProductsInStock_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/GetProductsInStockResponse" message="tns:IProductService_GetProductsInStock_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/addProduct" message="tns:IProductService_addProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/addProductResponse" message="tns:IProductService_addProduct_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -42,6 +52,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetProductsInStock">
       <soap:operation soapAction="http://tempuri.org/IProductService/GetProductsInStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProduct">
+      <soap:operation soapAction="http://tempuri.org/IProductService/addProduct" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
