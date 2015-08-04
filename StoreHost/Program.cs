@@ -35,6 +35,14 @@ namespace StoreHost
                 else if (input == "testproducts")
                 {
                     //add products here
+                    ProductService service = new ProductService();
+                    service.addProduct("Apple", 0.24, 200);
+                    service.addProduct("Mango", 3.99, 15);
+                    service.addProduct("Strawberry", 0.12, 500);
+                    service.addProduct("Hertog Jan 24 bottles", 13.99, 10);
+                    service.addProduct("Coca Cola 1.5L", 1.75, 25);
+                    Console.WriteLine("successfully added testproducts.");
+                    service = null;
                 }
                 else if (input == "exit")
                 {
