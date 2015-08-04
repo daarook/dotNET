@@ -52,7 +52,8 @@ namespace UserClient
         }
         private void RefreshInventory()
         {
-
+            OrderServiceClient proxy = new OrderServiceClient();
+            OrderDTO[] orders = proxy.GetCustomerOrders(customer.Name);
         }
 
         private void BuyProduct(object sender, RoutedEventArgs e)

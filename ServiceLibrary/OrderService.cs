@@ -39,11 +39,11 @@ namespace ServiceLibrary
                 ctx.SaveChanges();
             }
         }
-        public ArrayList GetCustomerOrders(Customer customer)
+        public ArrayList GetCustomerOrders(string customerName)
         {
             using (Model1Container ctx = new Model1Container())
             {
-
+                Customer customer = ctx.CustomerSet.First(c => c.Name == customerName);
                 Order[] ords = ctx.OrderSet.Select(o => o).Where(o => o.Customer == customer).ToArray();
                 ArrayList orders = new ArrayList();
                 foreach (Order ord in ords)
