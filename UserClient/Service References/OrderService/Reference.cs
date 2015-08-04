@@ -105,6 +105,9 @@ namespace UserClient.OrderService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProductIDField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -137,6 +140,19 @@ namespace UserClient.OrderService {
                 if ((this.ProductIDField.Equals(value) != true)) {
                     this.ProductIDField = value;
                     this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
                 }
             }
         }
