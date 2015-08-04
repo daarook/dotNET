@@ -44,6 +44,7 @@ namespace UserClient
             try
             {
                 proxy.PlaceOrder(customer.Name, orderRows);
+                RefreshStore();
             }
             catch (Exception ex)
             {
