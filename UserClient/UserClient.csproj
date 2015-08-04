@@ -135,7 +135,13 @@
     <None Include="Service References\OrderService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\OrderService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\OrderService\OrderService.wsdl" />
+    <None Include="Service References\OrderService\UserClient.OrderService.OrderDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ProductService\item.xsd">
       <SubType>Designer</SubType>
     </None>

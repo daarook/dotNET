@@ -18,10 +18,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfKeyValueOfstringint" nillable="true" type="tns:ArrayOfKeyValueOfstringint" />
-  <xs:complexType name="ArrayOfanyType">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" type="xs:anyType" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfanyType" nillable="true" type="tns:ArrayOfanyType" />
 </xs:schema>
