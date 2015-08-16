@@ -20,15 +20,6 @@
   <wsdl:message name="IStoreService_Authenticate_OutputMessage">
     <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
   </wsdl:message>
-  <wsdl:message name="IStoreService_Authenticate_CustomerErrorMessageFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/ServiceLibrary" name="detail" element="q1:CustomerErrorMessage" />
-  </wsdl:message>
-  <wsdl:message name="IStoreService_ChangeProductStock_InputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeProductStock" />
-  </wsdl:message>
-  <wsdl:message name="IStoreService_ChangeProductStock_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ChangeProductStockResponse" />
-  </wsdl:message>
   <wsdl:message name="IStoreService_GetProductsInStock_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductsInStock" />
   </wsdl:message>
@@ -61,11 +52,6 @@
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/Authenticate" message="tns:IStoreService_Authenticate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/AuthenticateResponse" message="tns:IStoreService_Authenticate_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IStoreService/AuthenticateCustomerErrorMessageFault" name="CustomerErrorMessageFault" message="tns:IStoreService_Authenticate_CustomerErrorMessageFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ChangeProductStock">
-      <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/ChangeProductStock" message="tns:IStoreService_ChangeProductStock_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IStoreService/ChangeProductStockResponse" message="tns:IStoreService_ChangeProductStock_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetProductsInStock">
       <wsdl:input wsaw:Action="http://tempuri.org/IStoreService/GetProductsInStock" message="tns:IStoreService_GetProductsInStock_InputMessage" />
@@ -97,18 +83,6 @@
     </wsdl:operation>
     <wsdl:operation name="Authenticate">
       <soap:operation soapAction="http://tempuri.org/IStoreService/Authenticate" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-      <wsdl:fault name="CustomerErrorMessageFault">
-        <soap:fault use="literal" name="CustomerErrorMessageFault" namespace="" />
-      </wsdl:fault>
-    </wsdl:operation>
-    <wsdl:operation name="ChangeProductStock">
-      <soap:operation soapAction="http://tempuri.org/IStoreService/ChangeProductStock" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
