@@ -19,9 +19,6 @@ namespace ServiceLibrary
         CustomerDTO Authenticate(string username, string password);
 
         [OperationContract]
-        void ChangeProductStock(Product product, int amount);
-
-        [OperationContract]
         ProductDTO[] GetProductsInStock();
 
         [OperationContract]
@@ -32,15 +29,6 @@ namespace ServiceLibrary
 
         [OperationContract]
         OrderDTO[] GetCustomerOrders(string customerName);
-    }
-
-    [DataContract]
-    public class CustomerErrorMessage
-    {
-        [DataMember]
-        public string Message { get; set; }
-        [DataMember]
-        public string Details { get; set; }
     }
 
     //TODO DTO objecten om te versturen over de lijn

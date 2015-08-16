@@ -53,15 +53,6 @@ namespace ServiceLibrary
             return cus;
         }
 
-        public void ChangeProductStock(Product product, int amount)
-        {
-            if (product == null)
-            {
-                throw new ArgumentNullException("product");
-            }
-            product.Stock += amount;
-
-        }
         public ProductDTO[] GetProductsInStock()
         {
             using (Model1Container ctx = new Model1Container())
