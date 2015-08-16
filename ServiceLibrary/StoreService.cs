@@ -34,18 +34,14 @@ namespace ServiceLibrary
         {
             using (Model1Container ctx = new Model1Container())
             {
-                CustomerErrorMessage error = new CustomerErrorMessage();
-                error.Message = "Either the user does not exist or the password is incorrect";
-                error.Details = "user does not exist";
                 if(ctx.CustomerSet.Any(c => c.Name == username)){
                     Customer customer = ctx.CustomerSet.Single(c => string.Equals(c.Name, username));
                     if (string.Equals(password, customer.Password))
                     {
                         return createDTO(customer);
-                    }
-                    error.Details = "password is incorrect";
+                    }          
                 }
-                throw new FaultException<CustomerErrorMessage>(error, error.Details);
+                throw new FaultException("password is incorrect or user does not exist");
             }
         }
         private CustomerDTO createDTO(Customer customer)
