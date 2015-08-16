@@ -89,7 +89,7 @@ namespace UserClient
             }
             catch (Exception ex)
             {
-
+                System.Windows.MessageBox.Show(ex.Message, "title", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -111,7 +111,7 @@ namespace UserClient
             }
             catch (Exception ex)
             {
-
+                System.Windows.MessageBox.Show(ex.Message, "title", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

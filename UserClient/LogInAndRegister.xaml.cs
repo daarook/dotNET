@@ -78,14 +78,11 @@ namespace UserClient
 
                     Close();
                 }
-                //catch (Exception ex)
-                //{
-
-                //}
-                catch (FaultException<CustomerErrorMessage> ex)
+                catch (Exception ex)
                 {
-                    LoginLabel.Content = ex.Message;
+                    System.Windows.MessageBox.Show(ex.Message, "title", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
+                    
             }
             else
             {
