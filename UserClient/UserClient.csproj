@@ -55,17 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Service References\CustomerService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\OrderService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ProductService\Reference.cs">
+    <Compile Include="Service References\StoreService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -113,49 +103,26 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\CustomerService\CustomerService.wsdl" />
-    <None Include="Service References\CustomerService\item.xsd">
+    <None Include="Service References\StoreService\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\CustomerService\item1.xsd">
+    <None Include="Service References\StoreService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\CustomerService\item2.xsd">
+    <None Include="Service References\StoreService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\CustomerService\UserClient.CustomerService.CustomerDTO.datasource">
+    <None Include="Service References\StoreService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\StoreService\StoreService.wsdl" />
+    <None Include="Service References\StoreService\UserClient.StoreService.CustomerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OrderService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\OrderService.wsdl" />
-    <None Include="Service References\OrderService\UserClient.OrderService.OrderDTO.datasource">
+    <None Include="Service References\StoreService\UserClient.StoreService.OrderDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProductService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\item3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductService\ProductService.wsdl" />
-    <None Include="Service References\ProductService\UserClient.ProductService.ProductDTO.datasource">
+    <None Include="Service References\StoreService\UserClient.StoreService.ProductDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>
@@ -166,51 +133,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\CustomerService\" />
-    <WCFMetadataStorage Include="Service References\OrderService\" />
-    <WCFMetadataStorage Include="Service References\ProductService\" />
+    <WCFMetadataStorage Include="Service References\StoreService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductService\item.disco" />
+    <None Include="Service References\StoreService\item.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductService\configuration91.svcinfo" />
+    <None Include="Service References\StoreService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductService\configuration.svcinfo" />
+    <None Include="Service References\StoreService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CustomerService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrderService\Reference.svcmap">
+    <None Include="Service References\StoreService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

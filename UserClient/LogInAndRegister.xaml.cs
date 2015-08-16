@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using UserClient.CustomerService;
+using UserClient.StoreService;
 using System.ServiceModel;
 
 namespace UserClient
@@ -35,7 +35,7 @@ namespace UserClient
             {
                 string message;
                 //call service
-                using (CustomerServiceClient proxy = new CustomerServiceClient())
+                using (StoreServiceClient proxy = new StoreServiceClient())
                 {
                     message = proxy.Register(username);
                 }
@@ -66,7 +66,7 @@ namespace UserClient
             if (validated)
             {
                 //call service
-                CustomerServiceClient proxy = new CustomerServiceClient();
+                StoreServiceClient proxy = new StoreServiceClient();
 
                 CustomerDTO user = null;
                 try
@@ -82,7 +82,7 @@ namespace UserClient
                 //{
 
                 //}
-                catch (FaultException<ErrorMessage> ex)
+                catch (FaultException<CustomerErrorMessage> ex)
                 {
                     LoginLabel.Content = ex.Message;
                 }

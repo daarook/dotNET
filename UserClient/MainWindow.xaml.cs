@@ -13,9 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections;
-using UserClient.ProductService;
-using UserClient.CustomerService;
-using UserClient.OrderService;
+using UserClient.StoreService;
 
 namespace UserClient
 {
@@ -47,12 +45,12 @@ namespace UserClient
         }
         private void RefreshUser()
         {
-            CustomerServiceClient proxy = new CustomerServiceClient();
+            StoreServiceClient proxy = new StoreServiceClient();
             customer = proxy.Authenticate(customer.Name, customer.Password);
         }
         private void RefreshInventory()
         {
-            OrderServiceClient proxy = new OrderServiceClient();
+            StoreServiceClient proxy = new StoreServiceClient();
             OrderDTO[] orders = proxy.GetCustomerOrders(customer.Name);
             Dictionary<string,int> products = new Dictionary<string,int>();
             foreach (OrderDTO order in orders)
@@ -81,7 +79,7 @@ namespace UserClient
         private void BuyProduct(object sender, RoutedEventArgs e)
         {
             ListBoxItem selected = (ListBoxItem)Stock.SelectedValue;
-            OrderServiceClient proxy = new OrderServiceClient();
+            StoreServiceClient proxy = new StoreServiceClient();
             Dictionary<string,int> orderRows = new Dictionary<string,int>();
             orderRows.Add(selected.Tag.ToString(), 1);
             try
@@ -97,7 +95,7 @@ namespace UserClient
 
         private void RefreshStore(object sender, RoutedEventArgs e)
         {
-            ProductServiceClient proxy = new ProductServiceClient();
+            StoreServiceClient proxy = new StoreServiceClient();
             ProductDTO[] products = null;
             try
             {
