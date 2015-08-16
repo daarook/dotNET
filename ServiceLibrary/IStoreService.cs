@@ -15,7 +15,6 @@ namespace ServiceLibrary
         string Register(String name);
 
         [OperationContract]
-        [FaultContract(typeof(CustomerErrorMessage))]
         CustomerDTO Authenticate(string username, string password);
 
         [OperationContract]
